@@ -7,7 +7,7 @@ import Button from "../components/common/Button";
 import Input from "../components/common/Input";
 import { useNavigation } from "@react-navigation/native";
 
-const HomeScreen = () => {
+const ItenaryScreen = () => {
   const navigation = useNavigation();
   const handleSearch = () => {
     navigation.navigate("Selected Itenaries");
@@ -16,30 +16,12 @@ const HomeScreen = () => {
     <View style={styles.container}>
       <View style={styles.subContainer}>
         <Text style={styles.heading}>Enter Details</Text>
-        <View style={styles.input}>
-          <Text style={styles.subHeading}>Enter city of departure</Text>
-          <Input placeholder="Enter location" />
-        </View>
-        <View style={styles.input}>
-          <Text style={styles.subHeading}>Your goals for the trip</Text>
-          <Input placeholder="Have fun with the family" />
-        </View>
-        <View style={styles.input}>
-          <Text style={styles.subHeading}>Enter City</Text>
-          <Input placeholder="New Delhi" />
-        </View>
-        <Text style={{ ...styles.subHeading, textAlign: "center" }}>Or</Text>
-        <View style={styles.input}>
-          <Text style={styles.subHeading}>Let us Choose</Text>
-          <Input placeholder="Choose" />
-        </View>
-        <Button title="Search" onPress={handleSearch} />
       </View>
     </View>
   );
 };
 
-export default HomeScreen;
+export default ItenaryScreen;
 
 const styles = StyleSheet.create({
   container: {

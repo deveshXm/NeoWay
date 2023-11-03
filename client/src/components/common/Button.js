@@ -5,19 +5,21 @@ import common from "../../../util/common";
 import * as Elements from "@rneui/themed";
 import { Image, StyleSheet } from "react-native";
 
-const Button = ({ title, onPress, style }) => {
+const Button = (props) => {
   return (
     <Elements.Button
       radius={"lg"}
       type="solid"
       color={common.color.buttonPrimary}
+      onPress={props.onPress}
       buttonStyle={{
         alignSelf: "center",
         gap: common.sizes.m,
         paddingHorizontal: common.sizes.l,
+        ...props.style,
       }}
     >
-      {title}
+      {props.title}
       <Image source={require("../../../assets/arrow.png")} />
     </Elements.Button>
   );
