@@ -1,4 +1,3 @@
 export default {
-  primary1: "white",
-  
+  backgroundPrimary: "white",
 };

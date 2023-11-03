@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const Landing = () => {
+const LandingScreen = () => {
   return (
     <View>
-      <Text>Landing</Text>
+      <Text>LandingScreen</Text>
     </View>
   );
 };
 
-export default Landing;
+export default LandingScreen;
 
 const styles = StyleSheet.create({});
