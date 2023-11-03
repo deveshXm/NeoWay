@@ -1,3 +1,5 @@
+import "react-native-gesture-handler";
+
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -8,16 +10,14 @@ import color from "./util/color";
 
 export default function App() {
   return (
-    <Context.Provider value={{}}>
-      <NavigationContainer>
-        <SafeAreaView>
+    <NavigationContainer>
+      <Context.Provider value={{}}>
+        <SafeAreaView style={styles.container}>
           <StatusBar backgroundColor={color.backgroundPrimary} style="dark" />
-          <View style={styles.container}>
-            <StackNavigator />
-          </View>
+          <StackNavigator />
         </SafeAreaView>
-      </NavigationContainer>
-    </Context.Provider>
+      </Context.Provider>
+    </NavigationContainer>
   );
 }
 
