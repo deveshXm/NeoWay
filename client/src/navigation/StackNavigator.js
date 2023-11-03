@@ -2,7 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screen/HomeScreen";
 import LandingScreen from "../screen/LandingScreen";
-import ItenaryScreen from "../screen/ItenaryScreen";
+import ItenaryScreen from "../screen/Itenary/ItenaryScreen";
 
 const Stack = createStackNavigator();
 

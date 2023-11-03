@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: common.color.backgroundPrimary,
+    paddingHorizontal: 10,
   },
   subContainer: {
     marginTop: common.sizes.l,
