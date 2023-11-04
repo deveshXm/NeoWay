@@ -10,20 +10,18 @@ const LandingScreen = () => {
   const navigation = useNavigation();
 
   const handleGetStarted = () => {
-    navigation.navigate("Home");
+    navigation.navigate("Chat");
   };
 
   return (
     <View style={styles.container}>
       <Image source={require("../../assets/traveller.png")} />
       <View style={styles.subContainer}>
-        <Text style={styles.heading}>
-          Discover a Hotel & Resort to Book a Suitable Room
-        </Text>
+        <Text style={styles.heading}>Blaze Your Own Trail"</Text>
         <Text style={styles.subHeading}>
-          The hotel and resort business is one of the best and loyal business in
-          the global market. We are the agency that helps to book you a good
-          room in a suitable palace at a reasonable price.
+          Your Passport to Adventure. Navigate uncharted territories, forge
+          unforgettable memories, and meet fellow explorers on a journey of a
+          lifetime. Explore, connect, and blaze your own trail with TrekTrail!"
         </Text>
         <Button title="Get Started" onPress={handleGetStarted} />
       </View>
@@ -36,10 +34,9 @@ export default LandingScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: common.color.backgroundPrimary,
-    paddingHorizontal: 10,
+    paddingHorizontal: common.sizes.s,
   },
   subContainer: {
     marginTop: common.sizes.l,

@@ -10,7 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 const HomeScreen = () => {
   const navigation = useNavigation();
   const handleSearch = () => {
-    navigation.navigate("Selected Itenaries");
+    navigation.navigate("Itenary");
   };
   return (
     <View style={styles.container}>
