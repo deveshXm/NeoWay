@@ -23,7 +23,7 @@ export default useVoiceToText = () => {
   };
 
   const stopSpeechToText = async () => {
-    await Voice.stop();
+    // await Voice.stop();
     setRecording(false);
   };
 

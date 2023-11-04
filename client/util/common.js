@@ -12,7 +12,8 @@ export default {
     subHeading2:"#555555",
     travelCardBackground: "#FFEAEA",
     travelCardDiscount:"#00CD46",
-    content: "#3A544F"
+    content: "#3A544F",
+    botPrimary: "#e0e0e0",
   },
   sizes: {
     dxxs: 1,
