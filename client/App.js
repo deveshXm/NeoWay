@@ -19,6 +19,8 @@ export default function App() {
     TechnaSans: require("./assets/fonts/TechnaSans-Regular.otf"),
     PoppinsRegular: require("./assets/fonts/Poppins-Regular.ttf"),
     PoppinsExtraBold: require("./assets/fonts/Poppins-ExtraBold.ttf"),
+    PoppinsSemiBold: require("./assets/fonts/Poppins-SemiBold.ttf"),
+    PoppinsMedium: require("./assets/fonts/Poppins-Medium.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {

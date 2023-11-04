@@ -8,6 +8,8 @@ export default {
     buttonPrimary: "#8000FF",
     textPrimary: "black",
     chatLoading: "#FFF5F5",
+    subHeading: "#333333",
+    content: "#3A544F"
   },
   sizes: {
     dxxs: 1,
@@ -35,5 +37,7 @@ export default {
     primaryFontFamily: "TechnaSans",
     secondaryFontFamily: "PoppinsRegular",
     poppinsExtraBold: "PoppinsExtraBold",
+    poppinsSemiBold: "PoppinsSemiBold",
+    poppinsMedium: "PoppinsMedium",
   },
 };

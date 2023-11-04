@@ -26,7 +26,8 @@ const ItenaryScreen = () => {
     <ItenaryLoadingScreen />
   ) : (
     <View style={styles.container}>
-      <Text style={styles.subHeading}>Total Itenary Price: $1500</Text>
+      <Text style={styles.subHeading}>Selected Itenaries</Text>
+      <Text style={styles.subHeading1}>Total Results: 20+</Text>
       <ItenaryNavigation />
     </View>
   );
@@ -37,6 +38,7 @@ export default ItenaryScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop:20,
     width: Dimensions.width,
     backgroundColor: common.color.backgroundPrimary,
     marginHorizontal: 0,
@@ -44,6 +46,15 @@ const styles = StyleSheet.create({
   subHeading: {
     marginLeft: common.sizes.l,
     textAlign: "flex-start",
-    fontSize: common.sizes.sm,
+    fontSize: common.sizes.ml,
+    color:common.color.subHeading,
+    fontFamily: common.text.poppinsSemiBold,
+  },
+  subHeading1: {
+    marginLeft: common.sizes.l,
+    fontSize: common.sizes.ms,
+    color:common.color.subHeading,
+    fontFamily: common.text.poppinsMedium,
+    marginTop:-5,
   },
 });
