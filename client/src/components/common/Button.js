@@ -12,6 +12,8 @@ const Button = (props) => {
       type="solid"
       color={common.color.buttonPrimary}
       onPress={props.onPress}
+      onPressIn={props.onPressIn}
+      onPressOut={props.onPressOut}
       buttonStyle={{
         alignSelf: "center",
         gap: common.sizes.m,

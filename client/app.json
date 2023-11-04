@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "TravelTroop",
-    "slug": "TravelTroop",
+    "name": "Neoway",
+    "slug": "Neoway",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,13 +18,32 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.devesh16.Neoway",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "@react-native-voice/voice",
+        {
+          "microphonePermission": "Allow Voice To Text Permssion",
+          "speechRecognitionPermission": "Allow Speech Recognition Permission"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "8556153c-b832-4e9c-aeb2-a4060b858023"
+      }
     }
   }
 }
