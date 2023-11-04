@@ -1,13 +1,15 @@
 import React from "react";
+
 import { createStackNavigator } from "@react-navigation/stack";
+import { CardStyleInterpolators } from "@react-navigation/stack";
+
 import HomeScreen from "../screen/HomeScreen";
+import ChatScreen from "../screen/ChatScreen";
 import LandingScreen from "../screen/LandingScreen";
 import ItenaryScreen from "../screen/Itenary/ItenaryScreen";
-import { CardStyleInterpolators } from "@react-navigation/stack";
-import Text from "../components/common/Text";
-import common from "../../util/common";
-import ChatScreen from "../screen/ChatScreen";
 import ChatLoadingScreen from "../screen/loading/ChatLoadingScreen";
+
+import common from "../../util/common";
 
 const Stack = createStackNavigator();
 
