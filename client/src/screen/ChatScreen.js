@@ -61,35 +61,33 @@ const ChatScreen = () => {
     <ChatLoadingScreen />
   ) : (
     <View style={styles.container}>
-      <View style={styles.subContainer}>
-        <FlatList
-          data={messages}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => (
+      <FlatList
+        data={messages}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => (
+          <View
+            style={
+              item.role === "user" ? styles.userMessage : styles.botMessage
+            }
+          >
+            {item.role !== "user" ? (
+              <Image source={require("../../assets/mascot.png")} />
+            ) : null}
             <View
               style={
-                item.role === "user" ? styles.userMessage : styles.botMessage
+                item.role === "user"
+                  ? styles.subUserMessage
+                  : styles.subBotMessage
               }
             >
-              {item.role !== "user" ? (
-                <Image source={require("../../assets/mascot.png")} />
-              ) : null}
-              <View
-                style={
-                  item.role === "user"
-                    ? styles.subUserMessage
-                    : styles.subBotMessage
-                }
-              >
-                <Text style={styles.messageText}>{item.content}</Text>
-              </View>
-              {item.role === "user" ? (
-                <Image source={require("../../assets/bot.png")} />
-              ) : null}
+              <Text style={styles.messageText}>{item.content}</Text>
             </View>
-          )}
-        />
-      </View>
+            {item.role === "user" ? (
+              <Image source={require("../../assets/bot.png")} />
+            ) : null}
+          </View>
+        )}
+      />
       <VoiceModal messages={messages} setMessages={setMessages} />
     </View>
   );
@@ -102,10 +100,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     backgroundColor: common.color.backgroundPrimary,
-  },
-  subContainer: {
-    flex: 1,
-    padding: common.sizes.l,
   },
   subUserMessage: {
     padding: common.sizes.ms,
@@ -120,15 +114,20 @@ const styles = StyleSheet.create({
     marginBottom: common.sizes.m,
   },
   userMessage: {
-    alignSelf: "flex-end",
+    width: "80%",
     flexDirection: "row",
+    alignSelf: "flex-end",
+    flex: 1,
   },
   botMessage: {
-    alignSelf: "flex-start",
+    width: "80%",
     flexDirection: "row",
+    alignSelf: "flex-start",
+    flex: 1,
   },
   messageText: {
-    fontSize: common.sizes.m,
+    fontSize: common.sizes.ms,
     color: "white",
+    flexWrap: "wrap", // This will allow text to wrap to the next line
   },
 });

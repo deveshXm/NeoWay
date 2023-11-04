@@ -65,9 +65,9 @@ const VoiceModal = (props) => {
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
       />
-      {recordedText.map((result, index) => (
+      {/* {recordedText.map((result, index) => (
         <Text key={index}>{result}</Text>
-      ))}
+      ))} */}
     </Animated.View>
   );
 };
