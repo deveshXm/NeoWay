@@ -13,12 +13,12 @@ const OverviewScreen = () => {
           <Text style={styles.content}>{data[0].description}</Text>
           {/* Day1 */}
 
-          {data[0].itenerary.map((item, id) => (
-            <View style={styles.container2}>
+          {data[0].itenerary.map((item, index) => (
+            <View key={index} style={styles.container2}>
               <Text style={styles.subHeading2}>{item.day}</Text>
               <Text style={styles.content}>{item.description}</Text>
-              {item.activities.map((activity, id) => (
-                <View>
+              {item.activities.map((activity, index) => (
+                <View key={index}>
                   <View style={styles.container1}>
                     <Text style={styles.subHeading3}>{activity.name}</Text>
                     <Text style={styles.content}>{activity.description} </Text>

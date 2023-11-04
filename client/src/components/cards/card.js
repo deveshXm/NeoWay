@@ -1,11 +1,12 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import common from "../../../util/common";
+import imageUrl from '../../../assets/hotel.png'
 
-const Card = ({ imageSource, title="Bogmalo Beach Resort", description="Vasco-da-gama" }) => {
+const Card = ({ imageSource={imageUrl}, title="Bogmalo Beach Resort", description="Vasco-da-gama" }) => {
   return (
     <View style={styles.card}>
-      <Image source={imageSource} style={styles.image} />
+      <Image source={imageUrl} style={styles.image} />
       {/* <View style={styles.parentDiv}> */}
         <View style={styles.overlay}>
           <Text style={styles.title}>{title}</Text>
