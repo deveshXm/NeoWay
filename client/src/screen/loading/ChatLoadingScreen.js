@@ -20,8 +20,8 @@ const ChatLoadingScreen = () => {
           <Text style={styles.heading}>AI</Text>
         </View>
         <View>
-          <Text style={styles.subHeading}>hakuna matata</Text>
-          <Text style={styles.subHeading}>Hi 👋!! I am Pumbaa</Text>
+          <Text style={styles.subHeading1}>hakuna matata</Text>
+          <Text style={styles.subHeading2}>Hi 👋!! I am Pumbaa</Text>
         </View>
       </View>
     </View>
@@ -51,7 +51,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: common.sizes.l,
   },
-  subHeading: {
+  subHeading1: {
+    color: "#002586",
+    fontWeight: 400,
+    textAlign: "center",
+    fontSize: common.sizes.m,
+  },
+  subHeading2: {
     color: "#002586",
     textAlign: "center",
   },

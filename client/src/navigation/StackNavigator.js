@@ -26,7 +26,7 @@ const Screens = {
     screen: ChatLoadingScreen,
     options: {
       title: "",
-      cardStyleInterpolator: CardStyleInterpolators.forFadeFromCenter,
+      cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       headerLeft: () => null,
     },
   },

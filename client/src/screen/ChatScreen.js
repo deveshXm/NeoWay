@@ -7,15 +7,17 @@ import ChatLoadingScreen from "./loading/ChatLoadingScreen";
 const ChatScreen = () => {
   const [loading, setLoading] = useState(true);
 
-  //   useEffect(() => {
-  //     (async () => {
-  //       Promise.resolve((resolve, reject) => {
-  //         setLoading(false);
-  //         resolve();
-  //       });
-  //     })();
-  //     setLoading(false);
-  //   }, []);
+  useEffect(() => {
+    (async () => {
+      await new Promise((resolve, reject) => {
+        setTimeout(() => {
+          setLoading(false);
+          resolve();
+        }, 2000);
+      });
+    })();
+  }, []);
+
   return loading ? (
     <ChatLoadingScreen />
   ) : (
