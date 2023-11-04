@@ -100,7 +100,7 @@ const VoiceModal = (props) => {
     >
       <Animated.View style={dynamicContainerStyle}>
         <View style={styles.mic}>
-          <Feather name="mic" size={50} color={common.color.buttonPrimary} />
+          <Feather name="mic" size={35} color={common.color.buttonPrimary} />
         </View>
         <View style={styles.container}>
           <Text style={styles.textMessage}>
@@ -128,8 +128,8 @@ const styles = StyleSheet.create({
   },
   textMessage: {
     color: common.color.backgroundPrimary,
-    fontFamily: common.text.poppinsSemiBold,
-    fontSize: common.sizes.l,
+    fontFamily: common.text.poppinsMedium,
+    fontSize: common.sizes.ml,
   },
   mic: {
     position: "absolute",

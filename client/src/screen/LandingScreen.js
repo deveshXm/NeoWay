@@ -10,7 +10,7 @@ const LandingScreen = () => {
   const navigation = useNavigation();
 
   const handleGetStarted = () => {
-    navigation.navigate("Itenary");
+    navigation.navigate("Chat");
   };
 
   return (
