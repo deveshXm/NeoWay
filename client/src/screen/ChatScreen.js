@@ -5,29 +5,22 @@ import common from "../../util/common";
 import ChatLoadingScreen from "./loading/ChatLoadingScreen";
 import Button from "../components/common/Button";
 import { useNavigation } from "@react-navigation/native";
+import useVoiceToText from "../../util/hooks/useVoiceToText";
 
 const ChatScreen = () => {
   const [loading, setLoading] = useState(true);
-  const navigation = useNavigation();
-
   const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState("");
-  const currentUser = "You";
-  const otherUser = "Friend";
+  const [currentMessage, setCurrentMessage] = useState([]);
+  const { recording, recognizing, recordedText, startSpeechToText } =
+    useVoiceToText();
 
-  const sendMessage = () => {
-    if (newMessage.trim() !== "") {
-      const message = { text: newMessage, user: currentUser };
+  useEffect(() => {
+    if (recognizing === false) {
+      const text = recordedText.join(" ");
+      const message = { text, user: "currentUser" };
       setMessages([...messages, message]);
-      setNewMessage("");
-
-      // Simulate a reply from the other user after a delay
-      setTimeout(() => {
-        const reply = { text: "Hi there!", user: otherUser };
-        setMessages([...messages, reply]);
-      }, 1000); // Simulate a one-second delay for the reply
     }
-  };
+  }, [recognizing]);
 
   useEffect(() => {
     (async () => {
@@ -50,7 +43,7 @@ const ChatScreen = () => {
         renderItem={({ item }) => (
           <View
             style={
-              item.user === currentUser
+              item.user === "currentUser"
                 ? styles.userMessage
                 : styles.otherUserMessage
             }
@@ -60,13 +53,14 @@ const ChatScreen = () => {
         )}
       />
       <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          value={newMessage}
-          onChangeText={(text) => setNewMessage(text)}
-          placeholder="Type your message..."
+        <Button
+          title="Start Speech to Text"
+          onPressIn={startSpeechToText}
+          // onPressOut={stopSpeechToText}
         />
-        <Button title="Send" onPress={sendMessage} />
+        {recordedText.map((result, index) => (
+          <Text key={index}>{result}</Text>
+        ))}
       </View>
     </View>
   );
