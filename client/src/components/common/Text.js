@@ -16,7 +16,7 @@ const styles = ReactNative.StyleSheet.create({
   text: {
     margin: 0,
     padding: 0,
-    fontFamily: common.text.fontFamily,
+    fontFamily: common.text.secondaryFontFamily,
     color: common.color.textPrimary,
     fontSize: common.sizes.m,
   },

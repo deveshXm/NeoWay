@@ -15,7 +15,7 @@ const LandingScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Image source={require("../../assets/home_icon.png")} />
+      <Image source={require("../../assets/traveller.png")} />
       <View style={styles.subContainer}>
         <Text style={styles.heading}>
           Discover a Hotel & Resort to Book a Suitable Room

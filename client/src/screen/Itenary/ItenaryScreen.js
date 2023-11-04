@@ -13,6 +13,7 @@ const ItenaryScreen = () => {
   };
   return (
     <View style={styles.container}>
+      <Text style={styles.subHeading}>Total Itenary Price: $1500</Text>
       <ItenaryNavigation />
     </View>
   );
@@ -26,5 +27,10 @@ const styles = StyleSheet.create({
     width: Dimensions.width,
     backgroundColor: common.color.backgroundPrimary,
     marginHorizontal: 0,
+  },
+  subHeading: {
+    marginLeft: common.sizes.l,
+    textAlign: "flex-start",
+    fontSize: common.sizes.sm,
   },
 });

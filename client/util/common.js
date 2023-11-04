@@ -3,6 +3,8 @@ import { Dimensions } from "react-native";
 export default {
   color: {
     backgroundPrimary: "white",
+    navigatorPrimary: "gray",
+    indicatorPrimary: "orange",
     buttonPrimary: "#8000FF",
     textPrimary: "black",
   },
@@ -29,6 +31,7 @@ export default {
     screenWidth: Dimensions.screenWidth,
   },
   text: {
-    fontFamily: "TechnaSans",
+    primaryFontFamily: "TechnaSans",
+    secondaryFontFamily: "Poppins",
   },
 };
