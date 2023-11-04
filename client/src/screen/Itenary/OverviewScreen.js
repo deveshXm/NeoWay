@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   subHeading3: {
     fontSize: common.sizes.ms,
     marginLeft: common.sizes.l,
-    color: common.color.subHeading,
+    color: common.color.subHeading2,
     fontFamily: common.text.poppinsSemiBold,
   },
   content: {

@@ -9,6 +9,7 @@ export default {
     textPrimary: "black",
     chatLoading: "#FFF5F5",
     subHeading: "#333333",
+    subHeading2:"#555555",
     content: "#3A544F"
   },
   sizes: {
