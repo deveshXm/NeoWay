@@ -14,25 +14,16 @@ const images = [
 
 const CarouselComponent = () => {
   const renderCarouselItem = ({ item, index }) => {
-    return (
-      <View >
-        {/* <Image source={item.source} style={styles.image} />
-        <LinearGradient
-          colors={["red", "violet"]}
-          style={styles.gradientOverlay}
-        /> */}
-        <Card  />
-      </View>
-    );
+    return <Card />;
   };
 
   return (
     <Carousel
       data={images}
       renderItem={renderCarouselItem}
-      sliderWidth={300} // Width of the carousel container
+      sliderWidth={320} // Width of the carousel container
       itemWidth={150} // Width of each carousel item
-      firstItem={Math.floor(images.length / 2)} 
+      firstItem={Math.floor(images.length / 2)}
     />
   );
 };

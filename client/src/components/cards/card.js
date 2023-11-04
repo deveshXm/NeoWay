@@ -1,18 +1,20 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import common from "../../../util/common";
-import imageUrl from '../../../assets/hotel.png'
+import imageUrl from "../../../assets/hotel.png";
 
-const Card = ({ imageSource={imageUrl}, title="Bogmalo Beach Resort", description="Vasco-da-gama" }) => {
+const Card = ({
+  imageSource = { imageUrl },
+  title = "Bogmalo Beach Resort",
+  description = "Vasco-da-gama",
+}) => {
   return (
     <View style={styles.card}>
       <Image source={imageUrl} style={styles.image} />
-      {/* <View style={styles.parentDiv}> */}
-        <View style={styles.overlay}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.description}>{description}</Text>
-        </View>
-      {/* </View> */}
+      <View style={styles.overlay}>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.description}>{description}</Text>
+      </View>
     </View>
   );
 };
@@ -24,7 +26,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: "hidden",
   },
-  parentDiv:{
+  parentDiv: {
     overflow: "hidden",
   },
   image: {

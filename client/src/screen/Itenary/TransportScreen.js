@@ -38,14 +38,14 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: common.sizes.s,
     width: Dimensions.width,
-    backgroundColor: common.color.backgroundPrimary,
+    backgroundColor: common.color.chatLoading,
     marginHorizontal: 0,
   },
   container2: {
     flex: 1,
     paddingTop: 20,
     width: Dimensions.width,
-    backgroundColor: common.color.backgroundPrimary,
+    backgroundColor: common.color.chatLoading,
     marginHorizontal: 10,
   },
   subHeading: {

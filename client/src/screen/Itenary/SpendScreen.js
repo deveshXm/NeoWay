@@ -1,35 +1,28 @@
-import {
-  ScrollView,
-  Dimensions,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-} from "react-native";
-import React from "react";
+import { ScrollView, Dimensions, StyleSheet, View, Image } from "react-native";
+import React, { useState } from "react";
 import common from "../../../util/common";
 import cardImage from "../../../assets/Card.png";
 import ExpenseTable from "../../components/Table";
+import Text from "../../components/common/Text";
 
 const SpendScreen = () => {
+  const [total, setTotal] = useState(0);
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Text style={styles.subHeading}>Spend</Text>
-        <Text style={styles.subHeading1}>Total Budget: 20+</Text>
-        <View style={styles.imageContainer}>
-          <Image source={cardImage} style={styles.image} />
-          {/* <Text style={styles.subHeading1}>Total Budget: 20+</Text> */}
+    <ScrollView style={styles.container}>
+      <Text style={styles.subHeading}>Spend</Text>
+      <View style={styles.imageContainer}>
+        <View style={styles.subImageContainer}>
+          <Text style={styles.subHeading}>Total Balance</Text>
+          <Text>${total}</Text>
         </View>
+        <Image source={cardImage} style={styles.image} />
+      </View>
+      <View style={styles.tableContainer}>
         <View style={styles.container2}>
           <Text style={styles.subHeading3}>Category</Text>
           <Text style={styles.subHeading3}>Expected Price</Text>
         </View>
-        <View style={styles.tableContainer}>
-          <Text style={styles.subHeading3}>
-          </Text>
-          <ExpenseTable />
-        </View>
+        <ExpenseTable />
       </View>
     </ScrollView>
   );
@@ -42,56 +35,51 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: common.sizes.s,
     width: Dimensions.width,
-    backgroundColor: common.color.backgroundPrimary,
-    marginHorizontal: 0,
+    backgroundColor: common.color.chatLoading,
+    paddingHorizontal: common.sizes.ml,
   },
   container2: {
     flex: 1,
-    paddingTop: 20,
-    width: Dimensions.width,
-    backgroundColor: common.color.backgroundPrimary,
     flexDirection: "row",
-    justifyContent: "space-between",
-    marginHorizontal: 30,
+    justifyContent: "space-around",
   },
   tableContainer: {
     flex: 1,
-    paddingTop: 20,
-    width: Dimensions.width,
-    flexDirection: "row",
-    marginHorizontal: 30,
+    borderRadius: common.sizes.l,
+    backgroundColor: common.color.backgroundPrimary,
+    padding:10,
   },
   imageContainer: {
-    paddingTop: 20,
-    width: Dimensions.width,
-    backgroundColor: common.color.backgroundPrimary,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginHorizontal: 20,
+    justifyContent: "center",
+    alignItems: "center",
     height: 200,
   },
   subHeading: {
     fontSize: common.sizes.m,
-    marginLeft: common.sizes.l,
     color: common.color.subHeading,
     fontFamily: common.text.poppinsSemiBold,
   },
   subHeading1: {
-    marginLeft: common.sizes.l,
     fontSize: common.sizes.ms,
     color: common.color.subHeading,
     fontFamily: common.text.poppinsMedium,
-    marginTop: -5,
   },
   subHeading3: {
     fontSize: common.sizes.ms,
     color: common.color.subHeading2,
     fontFamily: common.text.poppinsSemiBold,
   },
+  subImageContainer: {
+    position: "absolute",
+    backgroundColor: "white",
+    padding: common.sizes.l,
+    width: "90%",
+    height: "70%",
+    zIndex: 10,
+  },
   image: {
-    flex: 1,
     width: "100%",
-    height: "100%",
+    height: "90%",
     objectFit: "fill",
   },
 });

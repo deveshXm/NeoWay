@@ -41,8 +41,10 @@ const TravelCard = ({
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: common.color.travelCardBackground,
+    backgroundColor: common.color.backgroundPrimary,
     borderRadius: common.sizes.xs,
+    borderColor: common.color.travelCardBackground,
+    borderWidth:1,
     margin: common.sizes.xs,
     padding: common.sizes.xs,
     flexDirection: "column",
