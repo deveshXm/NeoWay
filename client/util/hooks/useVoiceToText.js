@@ -16,14 +16,14 @@ export default useVoiceToText = () => {
   }, []);
 
   const startSpeechToText = async () => {
-    await Voice.start("");
+    await Voice.start("en-US");
     setRecordedText([]);
     setRecording(true);
     setRecognizing(true);
   };
 
   const stopSpeechToText = async () => {
-    await Voice.stop();
+    // await Voice.stop();
     setRecording(false);
   };
 

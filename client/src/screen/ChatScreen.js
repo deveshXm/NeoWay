@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { FlatList, Image, StyleSheet, View } from "react-native";
 
 import common from "../../util/common";
 import ChatLoadingScreen from "./loading/ChatLoadingScreen";
-import Button from "../components/common/Button";
 import { useNavigation } from "@react-navigation/native";
-import useVoiceToText from "../../util/hooks/useVoiceToText";
 import VoiceModal from "../components/VoiceModal";
+import Text from "../components/common/Text";
 
 // [
 //   {
@@ -45,6 +37,7 @@ import VoiceModal from "../components/VoiceModal";
 const ChatScreen = () => {
   const [loading, setLoading] = useState(true);
   const [messages, setMessages] = useState([]);
+  const [botState, setBotState] = useState({});
 
   useEffect(() => {
     (async () => {
@@ -74,7 +67,10 @@ const ChatScreen = () => {
             }
           >
             {item.role !== "user" ? (
-              <Image source={require("../../assets/mascot.png")} />
+              <Image
+                source={require("../../assets/mascot.png")}
+                style={styles.image}
+              />
             ) : null}
             <View
               style={
@@ -86,12 +82,20 @@ const ChatScreen = () => {
               <Text style={styles.messageText}>{item.content}</Text>
             </View>
             {item.role === "user" ? (
-              <Image source={require("../../assets/bot.png")} />
+              <Image
+                source={require("../../assets/bot.png")}
+                style={styles.image}
+              />
             ) : null}
           </View>
         )}
       />
-      <VoiceModal messages={messages} setMessages={setMessages} />
+      <VoiceModal
+        messages={messages}
+        setMessages={setMessages}
+        botState={botState}
+        setBotState={setBotState}
+      />
     </View>
   );
 };
@@ -112,7 +116,7 @@ const styles = StyleSheet.create({
   subUserMessage: {
     padding: common.sizes.ms,
     borderRadius: common.sizes.l,
-    marginVertical: common.sizes.m,
+    marginVertical: common.sizes.xs,
     backgroundColor: common.color.buttonPrimary,
     flexShrink: 1, // Allow the container to shrink to fit the text if needed
   },
@@ -120,15 +124,22 @@ const styles = StyleSheet.create({
     backgroundColor: common.color.botPrimary,
     padding: common.sizes.ms,
     borderRadius: common.sizes.l,
-    marginVertical: common.sizes.m,
+    marginVertical: common.sizes.xs,
     flexShrink: 1, // Same as above
   },
   userMessage: {
     flexDirection: "row",
     alignSelf: "flex-end",
+    marginTop: common.sizes.m,
   },
   botMessage: {
     flexDirection: "row",
     alignSelf: "flex-start",
+    marginTop: common.sizes.m,
+  },
+  image: {
+    borderRadius: 100,
+    borderColor: "light-gray",
+    borderWidth: 1,
   },
 });
