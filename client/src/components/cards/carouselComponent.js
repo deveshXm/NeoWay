@@ -21,7 +21,7 @@ const CarouselComponent = () => {
           colors={["red", "violet"]}
           style={styles.gradientOverlay}
         /> */}
-        <Card imageSource={item.source} title="Bogmalo Resort" description="Vasco-da-gama" />
+        <Card  />
       </View>
     );
   };

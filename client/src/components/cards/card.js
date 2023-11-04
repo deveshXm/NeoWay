@@ -1,9 +1,8 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import common from "../../../util/common";
-import LinearGradient from "react-native-linear-gradient";
 
-const Card = ({ imageSource, title, description }) => {
+const Card = ({ imageSource, title="Bogmalo Beach Resort", description="Vasco-da-gama" }) => {
   return (
     <View style={styles.card}>
       <Image source={imageSource} style={styles.image} />
@@ -44,7 +43,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: common.sizes.mxs,
-    fontWeight: "bold",
+    // fontWeight: "bold",
     color: "white",
   },
   description: {

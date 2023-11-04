@@ -10,6 +10,8 @@ export default {
     chatLoading: "#FFF5F5",
     subHeading: "#333333",
     subHeading2:"#555555",
+    travelCardBackground: "#FFEAEA",
+    travelCardDiscount:"#00CD46",
     content: "#3A544F"
   },
   sizes: {

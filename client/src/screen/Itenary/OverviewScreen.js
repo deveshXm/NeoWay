@@ -2,70 +2,8 @@ import { ScrollView, Dimensions, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import common from "../../../util/common";
 import CarouselComponent from "../../components/cards/carouselComponent";
+import data from "../../../util/data/itenary.json";
 
-const data = [
-  {
-    title: "Trip to Dubai",
-    description:
-      "Aspen is as close as one can get to a storybook alpine town in America. The choose-your-own-adventure possibilities—skiing, hiking, dining shopping and ....",
-    itenerary: [
-      {
-        day: "Day 1 : Resting and Relaxing",
-        description:
-          "Places you can visit here are really exciting than and you would really enjoy your time spening here.",
-        activities: [
-          {
-            name: "Hotel Nearby",
-            description: "Hotels at ₹5000 at your distance worth staying in",
-            image: [
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-            ],
-          },
-          {
-            name: "Resteraunt Nearby",
-            description: "Resteraunts serving delicious foods within you reach",
-            image: [
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-            ],
-          },
-        ],
-      },
-      {
-        day: "Day 2 : Sporting and Outing",
-        description:
-          "Places where you can go out for hiking and sporting are really exciting than and you would really enjoy your time spening here.",
-        activities: [
-          {
-            name: "Hiking Nearby",
-            description: "Hills, Bike rides and many more",
-            image: [
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-            ],
-          },
-          {
-            name: "Water Sports Nearby",
-            description: "Water Sports, Deep water diving at an affordable rate",
-            image: [
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-            ],
-          },
-        ],
-      },
-    ],
-  },
-];
 const OverviewScreen = () => {
   return (
     <>
