@@ -1,14 +1,29 @@
-import { Image, StyleSheet, Text, View } from "react-native";
 import React, { useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
-import { useNavigation } from "@react-navigation/native";
+import { Image, StyleSheet, View } from "react-native";
+
 import common from "../../../util/common";
+import Text from "../../components/common/Text";
 
 const ChatLoadingScreen = () => {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={common.color.chatLoading} style="dark" />
-      <Image source={require("../../../assets/pumba.png")}  />
+      <Image
+        source={require("../../../assets/pumba.png")}
+        style={styles.image}
+      />
+      <View style={styles.subContainer}>
+        <View>
+          <Text style={styles.heading}>Meet your</Text>
+          <Text style={styles.heading}>Personal Neoway</Text>
+          <Text style={styles.heading}>AI</Text>
+        </View>
+        <View>
+          <Text style={styles.subHeading}>hakuna matata</Text>
+          <Text style={styles.subHeading}>Hi 👋!! I am Pumbaa</Text>
+        </View>
+      </View>
     </View>
   );
 };
@@ -21,5 +36,26 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: common.color.chatLoading,
+    paddingHorizontal: common.sizes.l,
+  },
+  subContainer: {
+    flex: 1,
+    marginTop: common.sizes.xl,
+    marginBottom: 150,
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  heading: {
+    color: "#002586",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: common.sizes.l,
+  },
+  subHeading: {
+    color: "#002586",
+    textAlign: "center",
+  },
+  image: {
+    position: "absolute",
   },
 });
