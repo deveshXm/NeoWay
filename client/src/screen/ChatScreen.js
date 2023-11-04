@@ -1,18 +1,29 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FlatList, Image, StyleSheet, View } from "react-native";
+import { BackHandler, FlatList, Image, StyleSheet, View } from "react-native";
 
 import common from "../../util/common";
 import ChatLoadingScreen from "./loading/ChatLoadingScreen";
 import VoiceModal from "../components/VoiceModal";
 import Text from "../components/common/Text";
+import { useNavigation } from "@react-navigation/native";
 
 const ChatScreen = () => {
   const [loading, setLoading] = useState(true);
   const [messages, setMessages] = useState([]);
 
   const flatListRef = useRef();
-
+  const navigation = useNavigation();
   useEffect(() => {
+    const backAction = () => {
+      navigation.navigate("Landing");
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
     (async () => {
       await new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -21,6 +32,7 @@ const ChatScreen = () => {
         }, 2000);
       });
     })();
+    return () => backHandler.remove();
   }, []);
 
   return loading ? (
@@ -32,7 +44,7 @@ const ChatScreen = () => {
         style={{
           paddingHorizontal: common.sizes.m,
         }}
-        contentContainerStyle={{paddingBottom:200}}
+        contentContainerStyle={{ paddingBottom: 200 }}
         data={messages}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
