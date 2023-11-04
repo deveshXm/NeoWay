@@ -62,6 +62,9 @@ const ChatScreen = () => {
   ) : (
     <View style={styles.container}>
       <FlatList
+        style={{
+          paddingHorizontal: common.sizes.m,
+        }}
         data={messages}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
@@ -101,33 +104,31 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     backgroundColor: common.color.backgroundPrimary,
   },
+  messageText: {
+    fontSize: common.sizes.ms,
+    color: "white",
+    flexWrap: "wrap", // Ensure text wraps to the next line if it's too long
+  },
   subUserMessage: {
     padding: common.sizes.ms,
     borderRadius: common.sizes.l,
-    marginBottom: common.sizes.m,
+    marginVertical: common.sizes.m,
     backgroundColor: common.color.buttonPrimary,
+    flexShrink: 1, // Allow the container to shrink to fit the text if needed
   },
   subBotMessage: {
     backgroundColor: common.color.botPrimary,
     padding: common.sizes.ms,
     borderRadius: common.sizes.l,
-    marginBottom: common.sizes.m,
+    marginVertical: common.sizes.m,
+    flexShrink: 1, // Same as above
   },
   userMessage: {
-    width: "80%",
     flexDirection: "row",
     alignSelf: "flex-end",
-    flex: 1,
   },
   botMessage: {
-    width: "80%",
     flexDirection: "row",
     alignSelf: "flex-start",
-    flex: 1,
-  },
-  messageText: {
-    fontSize: common.sizes.ms,
-    color: "white",
-    flexWrap: "wrap", // This will allow text to wrap to the next line
   },
 });
