@@ -3,7 +3,6 @@ import { FlatList, Image, StyleSheet, View } from "react-native";
 
 import common from "../../util/common";
 import ChatLoadingScreen from "./loading/ChatLoadingScreen";
-import { useNavigation } from "@react-navigation/native";
 import VoiceModal from "../components/VoiceModal";
 import Text from "../components/common/Text";
 
@@ -37,7 +36,6 @@ import Text from "../components/common/Text";
 const ChatScreen = () => {
   const [loading, setLoading] = useState(true);
   const [messages, setMessages] = useState([]);
-  const [botState, setBotState] = useState({});
 
   useEffect(() => {
     (async () => {
@@ -93,8 +91,6 @@ const ChatScreen = () => {
       <VoiceModal
         messages={messages}
         setMessages={setMessages}
-        botState={botState}
-        setBotState={setBotState}
       />
     </View>
   );

@@ -1,6 +1,5 @@
-async function chatRequest(history, botState, setHistory, setBotState) {
+async function chatRequest(history, setHistory,) {
   try {
-    console.log(history, botState, setHistory, setBotState);
     const response = await fetch(
       "https://1gtw7ttl-8000.inc1.devtunnels.ms/chat",
       {
@@ -8,13 +7,12 @@ async function chatRequest(history, botState, setHistory, setBotState) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ messages: history, state: botState }),
+        body: JSON.stringify({ messages: history }),
       }
     );
     const content = await response.json();
-    console.log(content);
     setHistory([...history, content.botResponse]);
-    setBotState(content.newState);
+    return content.newState
   } catch (error) {
     console.error("Failed to send chat history:", error);
   }

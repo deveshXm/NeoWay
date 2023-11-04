@@ -15,10 +15,13 @@ import useVoiceToText from "../../util/hooks/useVoiceToText";
 import common from "../../util/common";
 import chatRequest from "../../util/api/fetchChatRequest";
 import { TouchableHighlight } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 const VoiceModal = (props) => {
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const navigation = useNavigation();
 
   const {
     recording,
@@ -53,12 +56,12 @@ const VoiceModal = (props) => {
           const message = { content: text, role: "user" };
           const newMessages = [...props.messages, message];
           props.setMessages(newMessages);
-          await chatRequest(
+          const response = await chatRequest(
             newMessages,
-            props.botState,
-            props.setMessages,
-            props.setBotState
-          );
+            props.setMessages          );
+          if (response) {
+            navigation.navigate("Itenary");
+          }
         } catch (error) {
           console.log(error);
         } finally {
