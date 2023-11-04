@@ -6,6 +6,7 @@ import common from "../../../util/common";
 import Text from "../../components/common/Text";
 
 const ChatLoadingScreen = () => {
+  
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={common.color.chatLoading} style="dark" />
