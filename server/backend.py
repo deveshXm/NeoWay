@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from message import Message
 from typing import List
-from openai import PROMPT, MODEL
+from openAI import PROMPT, MODEL
 
 import openai
 import dotenv
@@ -16,7 +16,7 @@ except:
     pass
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
-# rapid_api_key = os.environ["RAPID_API_KEY"]
+rapid_api_key = os.environ["RAPID_API_KEY"]
 
 app = FastAPI()
 
@@ -37,6 +37,7 @@ def healthcheck():
 
 @app.post("/chat", response_model=dict)
 async def chat(messages: List[Message], state: dict = None):
+    print(messages)
     response = on_message(messages, state)
     if type(response) is tuple:
         bot_response, new_state = response
@@ -121,7 +122,7 @@ def on_message(message_history: List[Message], state: dict = None):
         guestQty = data["number of travelers"]
         
         
-        # If the prompt was used before then fetch the Record from Database otherwise create new Record
+
         hotels = get_hotel_details(city, startDate, endDate, guestQty)
         second_response = openai.ChatCompletion.create(
             temperature=0.7,
@@ -158,7 +159,7 @@ def get_hotel_details(city, startDate, endDate, guestQty):
     url = "https://best-booking-com-hotel.p.rapidapi.com/booking/best-accommodation"
     querystring = {"cityName":city,"countryName":"India"}
     headers = {
-        # "X-RapidAPI-Key": rapid_api_key,
+        "X-RapidAPI-Key": rapid_api_key,
         "X-RapidAPI-Host": "best-booking-com-hotel.p.rapidapi.com"
     }
     response = requests.get(url, headers=headers, params=querystring)
