@@ -15,7 +15,10 @@ const LandingScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Image source={require("../../assets/traveller.png")} />
+      <Image
+        source={require("../../assets/traveller.png")}
+        style={styles.image}
+      />
       <View style={styles.subContainer}>
         <Text style={styles.heading}>Blaze Your Own Trail"</Text>
         <Text style={styles.subHeading}>
@@ -35,8 +38,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    justifyContent: "center",
     backgroundColor: common.color.backgroundPrimary,
-    paddingHorizontal: common.sizes.s,
+    paddingHorizontal: common.sizes.l,
   },
   subContainer: {
     marginTop: common.sizes.l,
@@ -49,4 +53,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: common.sizes.s,
   },
+  image:{
+    height: "40%",
+  }
 });
