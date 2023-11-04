@@ -18,6 +18,7 @@ import { TouchableHighlight } from "react-native-gesture-handler";
 
 const VoiceModal = (props) => {
   const [visible, setVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const {
     recording,
@@ -27,19 +28,17 @@ const VoiceModal = (props) => {
     stopSpeechToText,
   } = useVoiceToText();
 
-  const handlePressIn = (event) => {
-    if (visible) {
-      event.preventDefault();
-    } else {
+  const handlePressIn = () => {
+    if (!loading) {
+      setVisible(true);
       startSpeechToText();
     }
   };
 
-  const handlePressOut = (event) => {
-    if (visible) {
-      event.preventDefault();
-    } else {
+  const handlePressOut = () => {
+    if (!loading) {
       stopSpeechToText();
+      setVisible(false);
     }
   };
 
@@ -49,7 +48,7 @@ const VoiceModal = (props) => {
     if (recognizing === false) {
       (async () => {
         try {
-          setVisible(true);
+          setLoading(true);
           const text = recordedText.join(" ");
           const message = { content: text, role: "user" };
           const newMessages = [...props.messages, message];
@@ -63,6 +62,7 @@ const VoiceModal = (props) => {
         } catch (error) {
           console.log(error);
         } finally {
+          setLoading(false);
           setVisible(false);
         }
       })();
@@ -95,7 +95,11 @@ const VoiceModal = (props) => {
         </View>
         <View style={styles.container}>
           <Text style={styles.textMessage}>
-            {recording ? "Listening..." : "Press To Speak"}
+            {loading
+              ? "Thinking..."
+              : recording
+              ? "Listening..."
+              : "Press To Speak"}
           </Text>
         </View>
       </Animated.View>
