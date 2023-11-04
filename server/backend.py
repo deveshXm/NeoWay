@@ -16,7 +16,7 @@ except:
     pass
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
-rapid_api_key = os.environ["RAPID_API_KEY"]
+# rapid_api_key = os.environ["RAPID_API_KEY"]
 
 app = FastAPI()
 
@@ -158,7 +158,7 @@ def get_hotel_details(city, startDate, endDate, guestQty):
     url = "https://best-booking-com-hotel.p.rapidapi.com/booking/best-accommodation"
     querystring = {"cityName":city,"countryName":"India"}
     headers = {
-        "X-RapidAPI-Key": rapid_api_key,
+        # "X-RapidAPI-Key": rapid_api_key,
         "X-RapidAPI-Host": "best-booking-com-hotel.p.rapidapi.com"
     }
     response = requests.get(url, headers=headers, params=querystring)
