@@ -33,6 +33,7 @@ export default {
   },
   text: {
     primaryFontFamily: "TechnaSans",
-    secondaryFontFamily: "Poppins",
+    secondaryFontFamily: "PoppinsRegular",
+    poppinsExtraBold: "PoppinsExtraBold",
   },
 };

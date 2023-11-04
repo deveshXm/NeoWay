@@ -17,7 +17,8 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [fontsLoaded] = useFonts({
     TechnaSans: require("./assets/fonts/TechnaSans-Regular.otf"),
-    Poppins: require("./assets/fonts/Poppins-Regular.ttf"),
+    PoppinsRegular: require("./assets/fonts/Poppins-Regular.ttf"),
+    PoppinsExtraBold: require("./assets/fonts/Poppins-ExtraBold.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {
