@@ -15,21 +15,13 @@ try:
 except:
     pass
 
-openai.organization = os.environ["OPENAI_ORG"]
-openai.api_key = os.environ["OPENAI_API_KEY"]
+# openai.organization = os.environ["OPENAI_ORG"]
+# openai.api_key = os.environ["OPENAI_API_KEY"]
 
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000",
-    "localhost:3000",
-    "https://triptrove.vercel.app",
-    "http://triptrove.vercel.app",
-    "https://triptrove.tech",
-    "http://triptrove.tech"
-    "www.triptrove.tech",
-    "https://www.triptrove.tech",
-    "http://www.triptrove.tech"
+    
 ]
 
 app.add_middleware(
