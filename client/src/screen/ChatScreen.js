@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FlatList, Image, StyleSheet, View } from "react-native";
 
 import common from "../../util/common";
@@ -6,36 +6,44 @@ import ChatLoadingScreen from "./loading/ChatLoadingScreen";
 import VoiceModal from "../components/VoiceModal";
 import Text from "../components/common/Text";
 
-// [
-//   {
-//     user: "currentUser",
-//     text: "hi",
-//   },
-// ];
-
-// {
-//   botMessage : {
-//     content : text,
-//     role : assistant | user
-//   },
-//   newState : {}
-// }
-
-// {
-//   messages : [
-//     {
-//       botMessage : {
-//         content : text,
-//         role : assistant | user
-//       },
-//     },
-//   ],
-//   state : {}
-// }
-
 const ChatScreen = () => {
   const [loading, setLoading] = useState(true);
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      role: "user",
+      content: "sdfs",
+    },
+    {
+      role: "user",
+      content: "sdfs",
+    },
+    {
+      role: "user",
+      content: "sdfs",
+    },
+    {
+      role: "user",
+      content: "sdfs",
+    },
+    {
+      role: "user",
+      content: "sdfs",
+    },
+    {
+      role: "user",
+      content: "sdfs",
+    },
+    {
+      role: "user",
+      content: "sdfs",
+    },
+    {
+      role: "user",
+      content: "sdfs",
+    },
+  ]);
+
+  const flatListRef = useRef();
 
   useEffect(() => {
     (async () => {
@@ -53,6 +61,7 @@ const ChatScreen = () => {
   ) : (
     <View style={styles.container}>
       <FlatList
+        ref={flatListRef}
         style={{
           paddingHorizontal: common.sizes.m,
         }}
@@ -91,6 +100,7 @@ const ChatScreen = () => {
       <VoiceModal
         messages={messages}
         setMessages={setMessages}
+        ref={flatListRef}
       />
     </View>
   );

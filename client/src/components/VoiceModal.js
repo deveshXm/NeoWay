@@ -56,9 +56,10 @@ const VoiceModal = (props) => {
           const message = { content: text, role: "user" };
           const newMessages = [...props.messages, message];
           props.setMessages(newMessages);
-          const response = await chatRequest(
-            newMessages,
-            props.setMessages          );
+          if (props.ref.current) {
+            props.ref.current.scrollToEnd({ animated: true });
+          }
+          const response = await chatRequest(newMessages, props.setMessages);
           if (response) {
             navigation.navigate("Itenary");
           }
