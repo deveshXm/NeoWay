@@ -2,94 +2,36 @@ import { ScrollView, Dimensions, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import common from "../../../util/common";
 import CarouselComponent from "../../components/cards/carouselComponent";
+import itenaryData from "../../../util/data/itenary.json";
 
-const data = [
-  {
-    title: "Trip to Dubai",
-    description:
-      "Aspen is as close as one can get to a storybook alpine town in America. The choose-your-own-adventure possibilities—skiing, hiking, dining shopping and ....",
-    itenerary: [
-      {
-        day: "Day 1 : Resting and Relaxing",
-        description:
-          "Places you can visit here are really exciting than and you would really enjoy your time spening here.",
-        activities: [
-          {
-            name: "Hotel Nearby",
-            description: "Hotels at ₹5000 at your distance worth staying in",
-            image: [
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-            ],
-          },
-          {
-            name: "Resteraunt Nearby",
-            description: "Resteraunts serving delicious foods within you reach",
-            image: [
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-            ],
-          },
-        ],
-      },
-      {
-        day: "Day 2 : Sporting and Outing",
-        description:
-          "Places where you can go out for hiking and sporting are really exciting than and you would really enjoy your time spening here.",
-        activities: [
-          {
-            name: "Hiking Nearby",
-            description: "Hills, Bike rides and many more",
-            image: [
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-            ],
-          },
-          {
-            name: "Water Sports Nearby",
-            description: "Water Sports, Deep water diving at an affordable rate",
-            image: [
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-              "../../../assets/hotel.png",
-            ],
-          },
-        ],
-      },
-    ],
-  },
-];
 const OverviewScreen = () => {
   return (
     <>
       <ScrollView>
         <View style={styles.container1}>
-          <Text style={styles.subHeading1}>{data[0].title}</Text>
-          <Text style={styles.content}>{data[0].description}</Text>
-          {/* Day1 */}
+          <View style={styles.alignmentContainer}>
+            <Text style={styles.subHeading1}>{itenaryData[0].title}</Text>
+            <Text style={styles.content}>{itenaryData[0].description}</Text>
 
-          {data[0].itenerary.map((item, id) => (
-            <View style={styles.container2}>
-              <Text style={styles.subHeading2}>{item.day}</Text>
-              <Text style={styles.content}>{item.description}</Text>
-              {item.activities.map((activity, id) => (
-                <View>
-                  <View style={styles.container1}>
-                    <Text style={styles.subHeading3}>{activity.name}</Text>
-                    <Text style={styles.content}>{activity.description} </Text>
+            {itenaryData[0].itenary.map((item, index) => (
+              <View key={index} style={styles.container2}>
+                <Text style={styles.subHeading2}>{item.day}</Text>
+                <Text style={styles.content}>{item.description}</Text>
+                {item.activities.map((activity, index) => (
+                  <View key={index}>
+                    <View style={styles.container1}>
+                      <Text style={styles.subHeading3}>{activity.name}</Text>
+                      <Text style={styles.content}>
+                        {activity.description}{" "}
+                      </Text>
+                    </View>
+                    {/* Send the data activity.images (Which is an arary of images) */}
+                    <CarouselComponent />
                   </View>
-                  <CarouselComponent />
-                </View>
-              ))}
-            </View>
-          ))}
+                ))}
+              </View>
+            ))}
+          </View>
         </View>
       </ScrollView>
     </>
@@ -114,27 +56,27 @@ const styles = StyleSheet.create({
     backgroundColor: common.color.backgroundPrimary,
     marginHorizontal: 0,
   },
+  alignmentContainer: {
+    marginHorizontal: common.sizes.ml,
+  },
   subHeading1: {
     fontSize: common.sizes.ml,
-    marginLeft: common.sizes.l,
     color: common.color.subHeading,
     fontFamily: common.text.poppinsSemiBold,
   },
   subHeading2: {
     fontSize: common.sizes.m,
-    marginLeft: common.sizes.l,
+    // marginLeft: common.sizes.l,
     color: common.color.subHeading,
     fontFamily: common.text.poppinsSemiBold,
   },
   subHeading3: {
     fontSize: common.sizes.ms,
-    marginLeft: common.sizes.l,
     color: common.color.subHeading2,
     fontFamily: common.text.poppinsSemiBold,
   },
   content: {
     fontSize: common.sizes.mxs,
-    marginLeft: common.sizes.l,
     color: common.color.content,
     fontFamily: common.text.poppinsRegular,
   },

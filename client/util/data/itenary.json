@@ -1,0 +1,60 @@
+[
+  {
+    "title": "Trip to Dubai",
+    "description": "Aspen is as close as one can get to a storybook alpine town in America. The choose-your-own-adventure possibilities—skiing, hiking, dining shopping and ....",
+    "itenary": [
+      {
+        "day": "Day 1 : Resting and Relaxing",
+        "description": "Places you can visit here are really exciting than and you would really enjoy your time spending here.",
+        "activities": [
+          {
+            "name": "Hotel Nearby",
+            "description": "Hotels at ₹5000 at your distance worth staying in",
+            "image": [
+              "../../../assets/hotel.png",
+              "../../../assets/hotel.png",
+              "../../../assets/hotel.png",
+              "../../../assets/hotel.png"
+            ]
+          },
+          {
+            "name": "Restaurant Nearby",
+            "description": "Restaurants serving delicious foods within your reach",
+            "image": [
+              "../../../assets/hotel.png",
+              "../../../assets/hotel.png",
+              "../../../assets/hotel.png",
+              "../../../assets/hotel.png"
+            ]
+          }
+        ]
+      },
+      {
+        "day": "Day 2 : Sporting and Outing",
+        "description": "Places where you can go out for hiking and sporting are really exciting than and you would really enjoy your time spending here.",
+        "activities": [
+          {
+            "name": "Hiking Nearby",
+            "description": "Hills, Bike rides and many more",
+            "image": [
+              "../../../assets/hotel.png",
+              "../../../assets/hotel.png",
+              "../../../assets/hotel.png",
+              "../../../assets/hotel.png"
+            ]
+          },
+          {
+            "name": "Water Sports Nearby",
+            "description": "Water Sports, Deep water diving at an affordable rate",
+            "image": [
+              "../../../assets/hotel.png",
+              "../../../assets/hotel.png",
+              "../../../assets/hotel.png",
+              "../../../assets/hotel.png"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -21,7 +21,7 @@ const CarouselComponent = () => {
           colors={["red", "violet"]}
           style={styles.gradientOverlay}
         /> */}
-        <Card imageSource={item.source} title="Bogmalo Resort" description="Vasco-da-gama" />
+        <Card  />
       </View>
     );
   };
@@ -30,9 +30,9 @@ const CarouselComponent = () => {
     <Carousel
       data={images}
       renderItem={renderCarouselItem}
-      sliderWidth={350} // Width of the carousel container
+      sliderWidth={300} // Width of the carousel container
       itemWidth={150} // Width of each carousel item
-      // firstItem={Math.floor(images.length / 2)} 
+      firstItem={Math.floor(images.length / 2)} 
     />
   );
 };

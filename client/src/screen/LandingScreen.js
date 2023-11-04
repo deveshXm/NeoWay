@@ -10,7 +10,7 @@ const LandingScreen = () => {
   const navigation = useNavigation();
 
   const handleGetStarted = () => {
-    navigation.navigate("Chat");
+    navigation.navigate("Itenary");
   };
 
   return (
@@ -20,12 +20,12 @@ const LandingScreen = () => {
         style={styles.image}
       />
       <View style={styles.subContainer}>
-        <Text style={styles.heading}>Blaze Your Own Trail"</Text>
-        <Text style={styles.subHeading}>
+        <Text style={styles.heading}>Your Path to Effortless Travel Planning and Savings</Text>
+        {/* <Text style={styles.subHeading}>
           Your Passport to Adventure. Navigate uncharted territories, forge
           unforgettable memories, and meet fellow explorers on a journey of a
           lifetime. Explore, connect, and blaze your own trail with TrekTrail!"
-        </Text>
+        </Text> */}
         <Button title="Get Started" onPress={handleGetStarted} />
       </View>
     </View>
@@ -48,12 +48,16 @@ const styles = StyleSheet.create({
   },
   heading: {
     textAlign: "center",
+    fontFamily: common.text.poppinsSemiBold,
+    fontSize: common.sizes.ml,
   },
   subHeading: {
     textAlign: "center",
     fontSize: common.sizes.s,
   },
   image:{
-    height: "40%",
+    width: 300,
+    height: 300,
+    resizeMode: "contain",  
   }
 });
