@@ -8,40 +8,7 @@ import Text from "../components/common/Text";
 
 const ChatScreen = () => {
   const [loading, setLoading] = useState(true);
-  const [messages, setMessages] = useState([
-    {
-      role: "user",
-      content: "sdfs",
-    },
-    {
-      role: "user",
-      content: "sdfs",
-    },
-    {
-      role: "user",
-      content: "sdfs",
-    },
-    {
-      role: "user",
-      content: "sdfs",
-    },
-    {
-      role: "user",
-      content: "sdfs",
-    },
-    {
-      role: "user",
-      content: "sdfs",
-    },
-    {
-      role: "user",
-      content: "sdfs",
-    },
-    {
-      role: "user",
-      content: "sdfs",
-    },
-  ]);
+  const [messages, setMessages] = useState([]);
 
   const flatListRef = useRef();
 
@@ -65,6 +32,7 @@ const ChatScreen = () => {
         style={{
           paddingHorizontal: common.sizes.m,
         }}
+        contentContainerStyle={{paddingBottom:200}}
         data={messages}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
@@ -100,7 +68,7 @@ const ChatScreen = () => {
       <VoiceModal
         messages={messages}
         setMessages={setMessages}
-        ref={flatListRef}
+        flatRef={flatListRef}
       />
     </View>
   );

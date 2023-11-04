@@ -53,19 +53,24 @@ const VoiceModal = (props) => {
         try {
           setLoading(true);
           const text = recordedText.join(" ");
-          const message = { content: text, role: "user" };
-          const newMessages = [...props.messages, message];
-          props.setMessages(newMessages);
-          if (props.ref.current) {
-            props.ref.current.scrollToEnd({ animated: true });
-          }
-          const response = await chatRequest(newMessages, props.setMessages);
-          if (response) {
-            navigation.navigate("Itenary");
+          if (text.length) {
+            const message = { content: text, role: "user" };
+            const newMessages = [...props.messages, message];
+            props.setMessages(newMessages);
+            if (props.flatRef.current) {
+              props.flatRef.current.scrollToEnd({ animated: true });
+            }
+            const response = await chatRequest(newMessages, props.setMessages);
+            if (response) {
+              navigation.navigate("Itenary");
+            }
           }
         } catch (error) {
           console.log(error);
         } finally {
+          if (props.flatRef.current) {
+            props.flatRef.current.scrollToEnd({ animated: true });
+          }
           setLoading(false);
           setVisible(false);
         }
