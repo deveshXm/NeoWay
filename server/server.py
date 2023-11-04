@@ -8,7 +8,7 @@ import httpx
 from fastapi.middleware.cors import CORSMiddleware
 from queries import query, availability_query, hotel_query
 from constants import BOOKING_URL, origins
-from openai import SYSTEM_PROMPT, MODEL
+from openAI import SYSTEM_PROMPT, MODEL
 import openai
 import dotenv
 import os

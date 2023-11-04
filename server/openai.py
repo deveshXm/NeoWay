@@ -27,6 +27,10 @@ I am your dedicated Travel Bot, here to make your trip unforgettable! Let's star
 User Input: [Destination]
 
 Prompt:
+That's a fantastic location! And where will you be departing from? Knowing your starting point will help me suggest the best modes of transportation for your trip.
+User Input: [Departure]
+
+Prompt:
 Great choice! Now, could you please specify the starting date of your trip? Knowing when you'll be embarking on your adventure will help me curate the best recommendations for you.
 User Input: [Start Date]
 
