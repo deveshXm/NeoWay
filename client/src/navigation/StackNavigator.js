@@ -7,6 +7,7 @@ import { CardStyleInterpolators } from "@react-navigation/stack";
 import Text from "../components/common/Text";
 import common from "../../util/common";
 import ChatScreen from "../screen/ChatScreen";
+import ChatLoadingScreen from "../screen/loading/ChatLoadingScreen";
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,14 @@ const Screens = {
     options: {
       title: "",
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      headerLeft: () => null,
+    },
+  },
+  ChatLoading: {
+    screen: ChatLoadingScreen,
+    options: {
+      title: "",
+      cardStyleInterpolator: CardStyleInterpolators.forFadeFromCenter,
       headerLeft: () => null,
     },
   },
@@ -50,7 +59,7 @@ const Screens = {
 
 function StackNavigator() {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       {Object.entries(Screens).map(([name, component], index) => (
         <Stack.Screen
           key={index}
