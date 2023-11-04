@@ -50,7 +50,7 @@ const Screens = {
 
 function StackNavigator() {
   return (
-    <Stack.Navigator screenOptions={{}}>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       {Object.entries(Screens).map(([name, component], index) => (
         <Stack.Screen
           key={index}

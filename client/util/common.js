@@ -7,6 +7,7 @@ export default {
     indicatorPrimary: "orange",
     buttonPrimary: "#8000FF",
     textPrimary: "black",
+    chatLoading: "#FFF5F5",
   },
   sizes: {
     dxxs: 1,
