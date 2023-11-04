@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import common from "../../../util/common";
-import LinearGradient from "react-native-linear-gradient";
 
 const Card = ({ imageSource, title, description }) => {
   return (

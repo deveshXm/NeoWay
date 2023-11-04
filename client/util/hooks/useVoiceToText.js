@@ -16,7 +16,7 @@ export default useVoiceToText = () => {
   }, []);
 
   const startSpeechToText = async () => {
-    await Voice.start("en-US");
+    await Voice.start("");
     setRecordedText([]);
     setRecording(true);
     setRecognizing(true);

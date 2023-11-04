@@ -1,26 +1,50 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 import common from "../../util/common";
 import ChatLoadingScreen from "./loading/ChatLoadingScreen";
 import Button from "../components/common/Button";
 import { useNavigation } from "@react-navigation/native";
 import useVoiceToText from "../../util/hooks/useVoiceToText";
+import VoiceModal from "../components/VoiceModal";
+
+// [
+//   {
+//     user: "currentUser",
+//     text: "hi",
+//   },
+// ];
+
+// {
+//   botMessage : {
+//     content : text,
+//     role : assistant | user
+//   },
+//   newState : {}
+// }
+
+// {
+//   messages : [
+//     {
+//       botMessage : {
+//         content : text,
+//         role : assistant | user
+//       },
+//     },
+//   ],
+//   state : {}
+// }
 
 const ChatScreen = () => {
   const [loading, setLoading] = useState(true);
   const [messages, setMessages] = useState([]);
-  const [currentMessage, setCurrentMessage] = useState([]);
-  const { recording, recognizing, recordedText, startSpeechToText } =
-    useVoiceToText();
-
-  useEffect(() => {
-    if (recognizing === false) {
-      const text = recordedText.join(" ");
-      const message = { text, user: "currentUser" };
-      setMessages([...messages, message]);
-    }
-  }, [recognizing]);
 
   useEffect(() => {
     (async () => {
@@ -37,31 +61,36 @@ const ChatScreen = () => {
     <ChatLoadingScreen />
   ) : (
     <View style={styles.container}>
-      <FlatList
-        data={messages}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
-          <View
-            style={
-              item.user === "currentUser"
-                ? styles.userMessage
-                : styles.otherUserMessage
-            }
-          >
-            <Text style={styles.messageText}>{item.text}</Text>
-          </View>
-        )}
-      />
-      <View style={styles.inputContainer}>
-        <Button
-          title="Start Speech to Text"
-          onPressIn={startSpeechToText}
-          // onPressOut={stopSpeechToText}
+      <View style={styles.subContainer}>
+        <FlatList
+          data={messages}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => (
+            <View
+              style={
+                item.role === "user" ? styles.userMessage : styles.botMessage
+              }
+            >
+              {item.role !== "user" ? (
+                <Image source={require("../../assets/mascot.png")} />
+              ) : null}
+              <View
+                style={
+                  item.role === "user"
+                    ? styles.subUserMessage
+                    : styles.subBotMessage
+                }
+              >
+                <Text style={styles.messageText}>{item.content}</Text>
+              </View>
+              {item.role === "user" ? (
+                <Image source={require("../../assets/bot.png")} />
+              ) : null}
+            </View>
+          )}
         />
-        {recordedText.map((result, index) => (
-          <Text key={index}>{result}</Text>
-        ))}
       </View>
+      <VoiceModal messages={messages} setMessages={setMessages} />
     </View>
   );
 };
@@ -71,38 +100,35 @@ export default ChatScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    justifyContent: "flex-end",
+    backgroundColor: common.color.backgroundPrimary,
+  },
+  subContainer: {
+    flex: 1,
+    padding: common.sizes.l,
+  },
+  subUserMessage: {
+    padding: common.sizes.ms,
+    borderRadius: common.sizes.l,
+    marginBottom: common.sizes.m,
+    backgroundColor: common.color.buttonPrimary,
+  },
+  subBotMessage: {
+    backgroundColor: common.color.botPrimary,
+    padding: common.sizes.ms,
+    borderRadius: common.sizes.l,
+    marginBottom: common.sizes.m,
   },
   userMessage: {
     alignSelf: "flex-end",
-    backgroundColor: "#007BFF",
-    padding: 8,
-    borderRadius: 8,
-    marginBottom: 8,
+    flexDirection: "row",
   },
-  otherUserMessage: {
+  botMessage: {
     alignSelf: "flex-start",
-    backgroundColor: "#e0e0e0",
-    padding: 8,
-    borderRadius: 8,
-    marginBottom: 8,
+    flexDirection: "row",
   },
   messageText: {
-    fontSize: 16,
+    fontSize: common.sizes.m,
     color: "white",
-  },
-  inputContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginTop: 16,
-  },
-  input: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 8,
-    marginRight: 8,
-    padding: 8,
   },
 });
