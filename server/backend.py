@@ -215,8 +215,7 @@ gmaps = googlemaps.Client(key=google_api_key)
 @app.get("/get_location/")
 async def get_location(latitude: float = Query(..., description="Latitude of the location"),
                        longitude: float = Query(..., description="Longitude of the location")):
-    try:
-        # Perform reverse geocoding using Google Maps API
+ 
         reverse_geocode = gmaps.reverse_geocode((latitude, longitude))
         
         if reverse_geocode:
@@ -230,5 +229,3 @@ async def get_location(latitude: float = Query(..., description="Latitude of the
             "latitude": latitude,
             "longitude": longitude
         }
-    except Exception as e:
-        return {"error": str(e)}
