@@ -1,4 +1,5 @@
 # Neoway
+![Neowway](https://raw.githubusercontent.com/deveshXm/NeoWay/main/client/assets/cover.png)
 
 NeoWay is an innovative mobile application designed to simplify and enhance the travel planning process. The app leverages cutting-edge deep learning technology to create personalized travel plans based on a user's budget, dream destination, travel requirements, and location. It features an integrated booking system for flights, accommodation, and insurance, streamlining the entire travel planning process. NeoWay also offers an automated budget estimator to help users accurately estimate their travel costs. The app ensures access to up-to-date information about destinations and travel-related services through data harvesting and API scraping.
 
@@ -41,17 +42,21 @@ Among our identified customer segments, university students and student backpack
 
 ## How we built it ⚙️
 
+![Archi](https://raw.githubusercontent.com/deveshXm/NeoWay/main/client/assets/archi.png)
+
 ## Design 🎨
 
 - Figma Link : https://www.figma.com/file/0dWgPkoVui56kJeQQzuP00/hackout?type=design&node-id=0%3A1&mode=design&t=qxIxSGn2nOjq33NK-1
 
-## Challenges we ran into 😤
+![Figma](https://raw.githubusercontent.com/deveshXm/NeoWay/main/client/assets/final.png)
+
+<!-- ## Challenges we ran into 😤
 
 ## Accomplishments that we're proud of ✨
 
 ## What we learned 🙌
 
-## What's next for Neoway 🚀
+## What's next for Neoway 🚀 -->
 
 ## References
 
