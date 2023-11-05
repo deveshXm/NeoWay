@@ -4,8 +4,10 @@ import common from "../../../util/common";
 import CarouselComponent from "../../components/cards/carouselComponent";
 import itenaryData from "../../../util/data/itenary.json";
 import Text from "../../components/common/Text";
+import { useItenaryContext } from "../../context/ItenaryContext";
 
 const OverviewScreen = () => {
+  const { state, addItenary } = useItenaryContext();
   return (
     <ScrollView style={styles.container}>
       <View style={styles.container1}>
@@ -29,7 +31,6 @@ const OverviewScreen = () => {
             </View>
           ))}
         </View>
-        
       </View>
     </ScrollView>
   );

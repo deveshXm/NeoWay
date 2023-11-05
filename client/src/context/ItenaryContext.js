@@ -1,14 +1,17 @@
-
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer } from "react";
 
 const initialState = {
-  itenaries: ["1", "2", "3"],
+  budget: "10000",
+  departure: "San Francisco",
+  destination: "Los Angeles",
+  end_date: "2024-07-30",
+  start_date: "2024-07-27",
 };
 
 const ItenaryContext = createContext();
 
 const actions = {
-  ADD_ITENARY : 'ADD_ITENARY'
+  ADD_ITENARY: "ADD_ITENARY",
 };
 
 const itenaryReducer = (state, action) => {
@@ -16,7 +19,7 @@ const itenaryReducer = (state, action) => {
     case actions.ADD_ITENARY:
       return {
         ...state,
-        itenaries: [...state.itenaries, action.payload],
+        itenaries: { ...action.payload },
       };
     default:
       return state;
@@ -26,7 +29,7 @@ const itenaryReducer = (state, action) => {
 export const useItenaryContext = () => {
   const context = useContext(ItenaryContext);
   if (!context) {
-    throw new Error('useItenaryContext must be used within an ItenaryProvider');
+    throw new Error("useItenaryContext must be used within an ItenaryProvider");
   }
   return context;
 };
@@ -45,4 +48,4 @@ export const ItenaryProvider = ({ children }) => {
   );
 };
 
-export default ItenaryContext
+export default ItenaryContext;

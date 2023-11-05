@@ -7,30 +7,37 @@ import ItenaryNavigation from "../../navigation/ItenaryNavigation";
 import { useNavigation } from "@react-navigation/native";
 import ItenaryLoadingScreen from "../loading/ItenaryLoadingScreen";
 import { TouchableHighlight } from "react-native-gesture-handler";
+import { useItenaryContext } from "../../context/ItenaryContext";
+import getItenaries from "../../../util/api/fetchItenary";
 
 const ItenaryScreen = () => {
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
+  const { state, addItenary } = useItenaryContext();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        console.log(state);
+        const response = await getItenaries(state);
+        console.log({ response });
+        
+      } catch (error) {
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, []);
 
   const handleChat = () => {
     navigation.navigate("Chat");
   };
 
-  useEffect(() => {
-    (async () => {
-      await new Promise((resolve, reject) => {
-        setTimeout(() => {
-          setLoading(false);
-          resolve();
-        }, 2000);
-      });
-    })();
-  }, []);
-
   return loading ? (
     <ItenaryLoadingScreen />
   ) : (
     <View style={styles.container}>
+      {/* <Text>{JSON.stringify(data)}</Text> */}
       <Text style={styles.subHeading}>Selected Itenaries</Text>
       <Text style={styles.subHeading1}>Total Results: 20+</Text>
       <View style={styles.bot}>

@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import common from "../../../util/common";
 
 const ItenaryLoadingScreen = () => {
+
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Planning </Text>
@@ -24,8 +25,8 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: common.sizes.xl,
-    fontFamily:common.text.poppinsExtraBold,
-    color:common.color.backgroundPrimary,
-    margin:-20
-  }
+    fontFamily: common.text.poppinsExtraBold,
+    color: common.color.backgroundPrimary,
+    margin: -20,
+  },
 });

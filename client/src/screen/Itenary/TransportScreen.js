@@ -4,8 +4,10 @@ import common from "../../../util/common";
 import TravelCard from "../../components/cards/travelCard";
 
 import travelData from "../../../util/data/travel.json";
+import { useItenaryContext } from "../../context/ItenaryContext";
 
 const TransportScreen = () => {
+  const { state, addItenary } = useItenaryContext();
   return (
     <ScrollView>
       <View style={styles.container}>

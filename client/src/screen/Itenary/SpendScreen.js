@@ -4,9 +4,11 @@ import common from "../../../util/common";
 import cardImage from "../../../assets/Card.png";
 import ExpenseTable from "../../components/Table";
 import Text from "../../components/common/Text";
+import { useItenaryContext } from "../../context/ItenaryContext";
 
 const SpendScreen = () => {
-  const [total, setTotal] = useState(0);
+  const { state, addItenary } = useItenaryContext();
+  const [total, setTotal] = useState(10000);
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.subHeading}>Spend</Text>
@@ -47,7 +49,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: common.sizes.l,
     backgroundColor: common.color.backgroundPrimary,
-    padding:10,
+    padding: 10,
   },
   imageContainer: {
     justifyContent: "center",
