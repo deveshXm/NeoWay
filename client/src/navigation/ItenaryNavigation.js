@@ -3,6 +3,7 @@ import OverviewScreen from "../screen/Itenary/OverviewScreen";
 import TransportScreen from "../screen/Itenary/TransportScreen";
 import SpendScreen from "../screen/Itenary/SpendScreen";
 import common from "../../util/common";
+import MapScreen from "../screen/Itenary/MapScreen";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -25,12 +26,19 @@ const Screens = {
       title: "Spend Analysis",
     },
   },
+  MapScreen: {
+    screen: MapScreen,
+    options: {
+      title: "Map View",
+    },
+  },
 };
 
 function ItenaryNavigation() {
   return (
     <Tab.Navigator
       screenOptions={{
+        swipeEnabled: false,
         activeTintColor: common.color.navigatorPrimary,
         inactiveTintColor: common.color.navigatorPrimary,
         tabBarItemStyle: {

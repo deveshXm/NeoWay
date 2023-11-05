@@ -38,6 +38,14 @@
           "microphonePermission": "Allow Voice To Text Permssion",
           "speechRecognitionPermission": "Allow Speech Recognition Permission"
         }
+      ],
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsImpl": "mapbox",
+          "RNMapboxMapsDownloadToken": "sk.eyJ1IjoiZGV2ZXNoMTYiLCJhIjoiY2xva3F3N29xMjQyNjJpbjBoZmFlYXA0MCJ9.RxbY7Cf2AR6VugCOX1xjXA"
+        }
+        
       ]
     ],
     "extra": {
