@@ -17,8 +17,9 @@ const initialCoordinates = {
 };
 
 const coordinates = [
-  { latitude: 37.78, longitude: -122.41 },
-  { latitude: 37.78, longitude: -122.42 },
+  { latitude: 25.1972, longitude: 55.2744 },
+  { latitude: 25.1985, longitude: 55.2799 },
+  { latitude: 25.1124, longitude: 55.139 },
   // ... more coordinates
 ];
 
