@@ -8,7 +8,7 @@
         "description": "Places you can visit here are really exciting than and you would really enjoy your time spending here.",
         "activities": [
           {
-            "name": "Hotel Nearby",
+            "name": "Burj Al Arab",
             "description": "Hotels at ₹5000 at your distance worth staying in",
             "image": [
               "../../../assets/hotel.png",
@@ -18,7 +18,7 @@
             ]
           },
           {
-            "name": "Restaurant Nearby",
+            "name": "The Dubai Mall",
             "description": "Restaurants serving delicious foods within your reach",
             "image": [
               "../../../assets/hotel.png",
@@ -34,8 +34,8 @@
         "description": "Places where you can go out for hiking and sporting are really exciting than and you would really enjoy your time spending here.",
         "activities": [
           {
-            "name": "Hiking Nearby",
-            "description": "Hills, Bike rides and many more",
+            "name": "Ski Dubai ",
+            "description": "Skiing at premiere skiingn complex of Dubai",
             "image": [
               "../../../assets/hotel.png",
               "../../../assets/hotel.png",
@@ -44,7 +44,7 @@
             ]
           },
           {
-            "name": "Water Sports Nearby",
+            "name": "Aquaventure Waterpark ",
             "description": "Water Sports, Deep water diving at an affordable rate",
             "image": [
               "../../../assets/hotel.png",

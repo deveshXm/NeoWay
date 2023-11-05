@@ -8,7 +8,7 @@ import { useItenaryContext } from "../../context/ItenaryContext";
 
 const SpendScreen = () => {
   const { state, addItenary } = useItenaryContext();
-  const [total, setTotal] = useState(10000);
+  const [total, setTotal] = useState(17400);
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.subHeading}>Spend</Text>

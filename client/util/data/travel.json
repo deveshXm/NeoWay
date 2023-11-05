@@ -20,26 +20,6 @@
       "discountCode": "Train50"
     },
     {
-      "transportName": "Bus",
-      "transportLogo": "https://example.com/bus-logo.png",
-      "boardingPoint": "DEL",
-      "destinationAddress": "BLR",
-      "departureTime": "07:00 AM",
-      "duration": " 06h 15m",
-      "arrivalTime": "01:15 PM",
-      "discountCode": "Bus40"
-    },
-    {
-      "transportName": "Cruise",
-      "transportLogo": "https://example.com/cruise-logo.png",
-      "boardingPoint": "JAL",
-      "destinationAddress": "DEL",
-      "departureTime": "10:00 AM",
-      "duration": " 08h 30m",
-      "arrivalTime": "06:30 PM",
-      "discountCode": "Cruise25"
-    },
-    {
       "transportName": "Car Rental",
       "transportLogo": "https://example.com/car-logo.png",
       "boardingPoint": "DEL",
@@ -49,34 +29,4 @@
       "arrivalTime": "02:15 PM",
       "discountCode": "CarRental10"
     },
-    {
-      "transportName": "Ferry",
-      "transportLogo": "https://example.com/ferry-logo.png",
-      "boardingPoint": "DEL",
-      "destinationAddress": "JAL",
-      "departureTime": "11:15 AM",
-      "duration": " 02h 30m",
-      "arrivalTime": "01:45 PM",
-      "discountCode": "Ferry15"
-    },
-    {
-      "transportName": "Taxi",
-      "transportLogo": "https://example.com/taxi-logo.png",
-      "boardingPoint": "DEL",
-      "destinationAddress": "BLR",
-      "departureTime": "05:45 AM",
-      "duration": " 02h 00m",
-      "arrivalTime": "07:45 AM",
-      "discountCode": "Taxi20"
-    },
-    {
-      "transportName": "Subway",
-      "transportLogo": "https://example.com/subway-logo.png",
-      "boardingPoint": "DEL",
-      "destinationAddress": "BLR",
-      "departureTime": "07:30 AM",
-      "duration": " 01h 15m",
-      "arrivalTime": "08:45 AM",
-      "discountCode": "Subway5"
-    }
 ]

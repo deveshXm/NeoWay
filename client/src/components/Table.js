@@ -9,11 +9,11 @@ export default class ExampleOne extends Component {
     this.state = {
       tableHead: ["Category", "Expected Price"],
       tableData: [
-        ["Accomodation", "₹2000"],
-        ["Travelling", "₹2000"],
-        ["Adventure", "₹2000"],
-        ["Food and Outing", "₹2000"],
-        ["Extras", "₹2000"],
+        ["Accomodation", "$3500"],
+        ["Travelling", "$4200"],
+        ["Adventure", "$2800"],
+        ["Food and Outing", "$2900"],
+        ["Extras", "$4000"],
       ],
     };
   }
