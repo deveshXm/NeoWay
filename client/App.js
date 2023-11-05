@@ -9,9 +9,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 
 import common from "./util/common";
-import Context from "./src/context/context";
+import Context from "./src/context/ItenaryContext";
 import StackNavigator from "./src/navigation/StackNavigator";
 
+import { ItenaryProvider } from "./src/context/ItenaryContext";
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
@@ -33,19 +34,21 @@ export default function App() {
     return null;
   }
   return (
-    <NavigationContainer>
-      <Context.Provider value={{}}>
-        <SafeAreaView style={styles.container}>
-          <View style={styles.container} onLayout={onLayoutRootView}>
-            <StatusBar
-              backgroundColor={common.color.backgroundPrimary}
-              style="dark"
-            />
-            <StackNavigator />
-          </View>
-        </SafeAreaView>
-      </Context.Provider>
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <ItenaryProvider>
+          <SafeAreaView style={styles.container}>
+            <View style={styles.container} onLayout={onLayoutRootView}>
+              <StatusBar
+                backgroundColor={common.color.backgroundPrimary}
+                style="dark"
+              />
+              <StackNavigator />
+            </View>
+          </SafeAreaView>
+        </ItenaryProvider>
+      </NavigationContainer>
+    </>
   );
 }
 

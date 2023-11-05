@@ -16,11 +16,12 @@ import common from "../../util/common";
 import chatRequest from "../../util/api/fetchChatRequest";
 import { TouchableHighlight } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
+import { useItenaryContext } from '../context/ItenaryContext';
 
 const VoiceModal = (props) => {
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const { addItenary } = useItenaryContext();
   const navigation = useNavigation();
 
   const {
@@ -61,8 +62,11 @@ const VoiceModal = (props) => {
               props.flatRef.current.scrollToEnd({ animated: true });
             }
             const response = await chatRequest(newMessages, props.setMessages);
-            if (response) {
+            if (response.newState) {
               navigation.navigate("Itenary");
+              // Set Itenary Context here, res.data
+              addItenary(response.newState);
+
             }
           }
         } catch (error) {
