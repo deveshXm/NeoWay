@@ -51,7 +51,9 @@ Among our identified customer segments, university students and student backpack
 ![Figma](https://raw.githubusercontent.com/deveshXm/NeoWay/main/client/assets/final.png)
 
 ## Presentation Link 🎁
-https://www.canva.com/design/DAFzP8g0GVk/Md9Jv9gM9azaMfTKIIKxYQ/edit?utm_content=DAFzP8g0GVk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+[Link to My Our Canva Presentation](https://www.canva.com/design/DAFzP8g0GVk/view)
+
 
 ## Video Demo 📽️
 
