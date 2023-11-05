@@ -53,4 +53,22 @@ User Input: [Number of Travelers]
 Now that I have all the necessary details, I'll use this information to craft personalized recommendations for places to visit, modes of transportation, and much more. Let's make this trip extraordinary!"""
 
 
+CUSTOMIZE_PROMPT = """
+I want to go to visit {} and i am starting from {}, my starting date is {} and end date is {}, my budget is {} dollars, can you give me all the list of attractions to visit each day and a mode of transportation to visit the next tourist attraction?
+
+Give me the answer in an array of objects , each object should look like this
+
+{
+"dayNo": <dayNo>,
+"attraction" : <attractName>,
+"transport": <mode of Transportation>,
+"hotel" : <hotel name>,
+"expenditure": <rough expenditure in dollars>
+}
+
+Hotel should the famous nearest hotel to the attraction and expenditure should be the rough expenditure for the day
+Only give me the array of objects, nothing else
+"""
+
+
 MODEL = "gpt-3.5-turbo"
