@@ -13,7 +13,7 @@ import json
 import requests
 import re
 import httpx
-import googlemaps
+# import googlemaps
 
 try:
     dotenv.load_dotenv(".env")
@@ -22,7 +22,7 @@ except:
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
 rapid_api_key = os.environ["RAPID_API_KEY"]
-google_api_key = os.environ["GOOGLE_API_KEY"]
+# google_api_key = os.environ["GOOGLE_API_KEY"]
 
 app = FastAPI()
 
@@ -210,22 +210,22 @@ async def flightsToDestination(body: GetFlights):
 
 
 # Replace 'YOUR_API_KEY' with your actual Google Maps API key
-gmaps = googlemaps.Client(key=google_api_key)
+# gmaps = googlemaps.Client(key=google_api_key)
 
-@app.get("/get_location/")
-async def get_location(latitude: float = Query(..., description="Latitude of the location"),
-                       longitude: float = Query(..., description="Longitude of the location")):
+# @app.get("/get_location/")
+# async def get_location(latitude: float = Query(..., description="Latitude of the location"),
+#                        longitude: float = Query(..., description="Longitude of the location")):
  
-        reverse_geocode = gmaps.reverse_geocode((latitude, longitude))
+#         reverse_geocode = gmaps.reverse_geocode((latitude, longitude))
         
-        if reverse_geocode:
-            location = reverse_geocode[0]
-            formatted_address = location.get("formatted_address", "")
-        else:
-            formatted_address = "Address not found"
+#         if reverse_geocode:
+#             location = reverse_geocode[0]
+#             formatted_address = location.get("formatted_address", "")
+#         else:
+#             formatted_address = "Address not found"
         
-        return {
-            "location": formatted_address,
-            "latitude": latitude,
-            "longitude": longitude
-        }
+#         return {
+#             "location": formatted_address,
+#             "latitude": latitude,
+#             "longitude": longitude
+#         }
