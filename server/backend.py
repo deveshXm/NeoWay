@@ -86,7 +86,7 @@ def on_message(message_history: List[Message], state: dict = None):
         
         print(destination,departure,startDate,endDate,budget)
 
-        # hotels = get_hotel_details(departure, startDate, endDate)
+        hotels = get_hotel_details(departure)
         second_response = openai.ChatCompletion.create(
             temperature=0.7,
             max_tokens=1000,
@@ -140,7 +140,7 @@ async def recommendations(data: Recommendation):
     
     
 
-def get_hotel_details(city, startDate, endDate):
+def get_hotel_details(city):
     url = "https://best-booking-com-hotel.p.rapidapi.com/booking/best-accommodation"
     querystring = {"cityName":city,"countryName":"India"}
     headers = {
