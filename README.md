@@ -43,6 +43,7 @@ Among our identified customer segments, university students and student backpack
 
 ## Design 🎨
 
+- Figma Link : https://www.figma.com/file/0dWgPkoVui56kJeQQzuP00/hackout?type=design&node-id=0%3A1&mode=design&t=qxIxSGn2nOjq33NK-1
 
 ## Challenges we ran into 😤
 
