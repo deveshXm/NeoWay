@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,Query
 from fastapi.middleware.cors import CORSMiddleware
 from interface import Message,Recommendation,GetFlights
 from typing import List
@@ -13,6 +13,7 @@ import json
 import requests
 import re
 import httpx
+import googlemaps
 
 try:
     dotenv.load_dotenv(".env")
@@ -21,6 +22,7 @@ except:
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
 rapid_api_key = os.environ["RAPID_API_KEY"]
+google_api_key = os.environ["GOOGLE_API_KEY"]
 
 app = FastAPI()
 
@@ -137,15 +139,16 @@ async def recommendations(data: Recommendation):
             
     
     
-# Get Hotels Details
-# def get_hotel_details(city, startDate, endDate):
-#     url = "https://best-booking-com-hotel.p.rapidapi.com/booking/best-accommodation"
-#     querystring = {"cityName":city,"countryName":"India"}
-#     headers = {
-#         "X-RapidAPI-Key": rapid_api_key,
-#         "X-RapidAPI-Host": "best-booking-com-hotel.p.rapidapi.com"
-#     }
-#     response = requests.get(url, headers=headers, params=querystring)
+
+def get_hotel_details(city, startDate, endDate):
+    url = "https://best-booking-com-hotel.p.rapidapi.com/booking/best-accommodation"
+    querystring = {"cityName":city,"countryName":"India"}
+    headers = {
+        "X-RapidAPI-Key": rapid_api_key,
+        "X-RapidAPI-Host": "best-booking-com-hotel.p.rapidapi.com"
+    }
+    response = requests.get(url, headers=headers, params=querystring)
+    return response.json()
 
 @app.post("/flightsToDestination")
 async def flightsToDestination(body: GetFlights):
@@ -203,3 +206,29 @@ async def flightsToDestination(body: GetFlights):
 
         return {"details": offerToUse["segments"], "price": sum(
             [item["travellerPriceBreakdown"]["total"]["units"] for item in offerToUse["travellerPrices"]])}
+
+
+
+# Replace 'YOUR_API_KEY' with your actual Google Maps API key
+gmaps = googlemaps.Client(key=google_api_key)
+
+@app.get("/get_location/")
+async def get_location(latitude: float = Query(..., description="Latitude of the location"),
+                       longitude: float = Query(..., description="Longitude of the location")):
+    try:
+        # Perform reverse geocoding using Google Maps API
+        reverse_geocode = gmaps.reverse_geocode((latitude, longitude))
+        
+        if reverse_geocode:
+            location = reverse_geocode[0]
+            formatted_address = location.get("formatted_address", "")
+        else:
+            formatted_address = "Address not found"
+        
+        return {
+            "location": formatted_address,
+            "latitude": latitude,
+            "longitude": longitude
+        }
+    except Exception as e:
+        return {"error": str(e)}
