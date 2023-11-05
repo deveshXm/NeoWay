@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from interface import Message,Recommendation
+from interface import Message,Recommendation,GetFlights
 from typing import List
 from openAI import PROMPT, MODEL, CUSTOMIZE_PROMPT
 from functions import functions
@@ -12,6 +12,7 @@ import os
 import json
 import requests
 import re
+import httpx
 
 try:
     dotenv.load_dotenv(".env")
@@ -145,5 +146,60 @@ async def recommendations(data: Recommendation):
 #         "X-RapidAPI-Host": "best-booking-com-hotel.p.rapidapi.com"
 #     }
 #     response = requests.get(url, headers=headers, params=querystring)
-#     return response.json()
 
+@app.post("/flightsToDestination")
+async def flightsToDestination(body: GetFlights):
+    async with httpx.AsyncClient() as client:
+        res = await client.get(
+            f"https://flights.booking.com/api/flights/",
+            params={
+                "type": "ROUNDTRIP",
+                "adults": body.adults,
+                "cabinClass": "ECONOMY",
+                "children": body.children,
+                "from": body.fromLocation.city + ".CITY",
+                "to": body.toLocation.city + ".CITY",
+                "fromCountry": body.fromLocation.country,
+                "toCountry": body.toLocation.country,
+                "fromLocationName": body.fromLocation.cityName,
+                "toLocationName": body.toLocation.cityName,
+                "depart": body.departDate,
+                "return": body.returnDate,
+                "sort": "BEST",
+                "travelPurpose": "leisure",
+                "aid": 304142,
+                "label": "gen173nr-1FEghwYWNrYWdlcyiCAjjoB0gzWARoJ4gBAZgBMbgBB8gBDNgBAegBAfgBAogCAagCA7gCvrPYpAbAAgHSAiQ5ZDQ1MDI0Ny1jMzEyLTQ3YzUtYWI5My0zN2EyYTcwNjk3ZjHYAgXgAgE",
+                "enableVI": 1
+            },
+            headers={
+                "Accept": "*/*",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/114.0",
+                "Accept-Language": "en-US,en;q=0.5",
+                "X-Requested-From": "clientFetch",
+                "X-Flights-Context-Name": "search_results",
+                "X-Booking-Affiliate-Id": "304142",
+                "X-Booking-Label": "gen173nr-1FEghwYWNrYWdlcyiCAjjoB0gzWARoJ4gBAZgBMbgBB8gBDNgBAegBAfgBAogCAagCA7gCvrPYpAbAAgHSAiQ5ZDQ1MDI0Ny1jMzEyLTQ3YzUtYWI5My0zN2EyYTcwNjk3ZjHYAgXgAgE"
+            },
+            timeout=None
+        )
+
+        offers = res.json()
+        if "error" in offers:
+            # no flight
+            return []
+
+        offers = offers["flightOffers"]
+        difference = 10000000
+        closestToBudget = 0
+        for i, offer in enumerate(offers[1:]):
+            price = sum([item["travellerPriceBreakdown"]["total"]["units"] for item in offer["travellerPrices"]])
+            newDiff = abs(price - body.flightBudget)
+
+            if newDiff < difference:
+                difference = newDiff
+                closestToBudget = i + 1
+
+        offerToUse = offers[closestToBudget]
+
+        return {"details": offerToUse["segments"], "price": sum(
+            [item["travellerPriceBreakdown"]["total"]["units"] for item in offerToUse["travellerPrices"]])}
