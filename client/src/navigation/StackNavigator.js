@@ -3,7 +3,6 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { CardStyleInterpolators } from "@react-navigation/stack";
 
-import HomeScreen from "../screen/HomeScreen";
 import ChatScreen from "../screen/ChatScreen";
 import LandingScreen from "../screen/LandingScreen";
 import ItenaryScreen from "../screen/Itenary/ItenaryScreen";
@@ -47,14 +46,6 @@ const Screens = {
       headerTitleContainerStyle: {
         marginLeft: common.sizes.l,
       },
-    },
-  },
-  Home: {
-    screen: HomeScreen,
-    options: {
-      title: "",
-      cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      headerLeft: () => null,
     },
   },
 };
