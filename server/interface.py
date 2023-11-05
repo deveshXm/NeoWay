@@ -11,3 +11,4 @@ class Recommendation(BaseModel):
     departure: str
     start_date: str
     end_date: str
+    budget: str

@@ -63,10 +63,12 @@ Give me the answer in an array of objects , each object should look like this
 "attraction" : <attractName>,
 "transport": <mode of Transportation>,
 "hotel" : <hotel name>,
-"expenditure": <rough expenditure in dollars>
+"expenditure": <rough expenditure in dollars>,
+"coordinates": <x-coordinate, y-coordinate>
 }
 
 Hotel should the famous nearest hotel to the attraction and expenditure should be the rough expenditure for the day
+coordinates should be the coordinates of the attraction
 Only give me the array of objects, nothing else
 """
 

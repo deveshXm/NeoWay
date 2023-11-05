@@ -49,7 +49,7 @@ async def chat(messages: List[Message], state: dict = None):
             "arguments": arguments,
         }
     elif type(response) is str:
-        return {"botResponse": {"content": response, "role": "assistant"}, "newState": False,"arguments": None}
+        return {"botResponse": {"content": response, "role": "assistant"}, "newState": False,"arguments": {}}
 
 
 def on_message(message_history: List[Message], state: dict = None):
@@ -81,9 +81,9 @@ def on_message(message_history: List[Message], state: dict = None):
         endDate = data["trip end date"]
         budget = data["trip budget"]
         
-        
+        print(destination,departure,startDate,endDate,budget)
 
-        hotels = get_hotel_details(departure, startDate, endDate)
+        # hotels = get_hotel_details(departure, startDate, endDate)
         second_response = openai.ChatCompletion.create(
             temperature=0.7,
             max_tokens=1000,
@@ -100,13 +100,13 @@ def on_message(message_history: List[Message], state: dict = None):
             + "Suggested Hotels for you to Book : "
             + "\n \n"
             + "Name : "
-            + hotels["name"]
+            + "taj hotel"
             + "\n \n"
             + "Link : "
-            + hotels["link"]
+            + "https"
             + "\n \n"
             + "Rating : "
-            + str(hotels["rating"]),
+            + "five",
             {"departure":departure, "destination":destination, "start_date": startDate, "end_date": endDate,"budget": budget}
         )
 
@@ -116,32 +116,34 @@ def on_message(message_history: List[Message], state: dict = None):
 
 
 @app.post("/recommendations", response_model=dict)
-def recommendations(data: Recommendation):
+async def recommendations(data: Recommendation):
+        print("data",data)
         response = openai.ChatCompletion.create(
         temperature=0.7,
         max_tokens=1000,
         messages=[
-            {"role": "system", "content": CUSTOMIZE_PROMPT.format(data.destination, data.departure, data.start_date, data.end_date, data.budget_range)},
+            {"role": "system", "content": CUSTOMIZE_PROMPT.format(data.destination, data.departure, data.start_date, data.end_date, data.budget)},
         ],
         model=MODEL,
     )
-        gptResponse = json.loads(response["choices"][0]["message"]["content"])
+        gptResponse = response["choices"][0]["message"]["content"]
+        print(gptResponse)
         json_match = re.search(r'{.*}', gptResponse)
         json_data = json_match.group(0)
         json_dict = json.loads(json_data)
-        print(json_dict)
+        # print(json_dict)
         return json_dict
             
     
     
 # Get Hotels Details
-def get_hotel_details(city, startDate, endDate):
-    url = "https://best-booking-com-hotel.p.rapidapi.com/booking/best-accommodation"
-    querystring = {"cityName":city,"countryName":"India"}
-    headers = {
-        "X-RapidAPI-Key": rapid_api_key,
-        "X-RapidAPI-Host": "best-booking-com-hotel.p.rapidapi.com"
-    }
-    response = requests.get(url, headers=headers, params=querystring)
-    return response.json()
+# def get_hotel_details(city, startDate, endDate):
+#     url = "https://best-booking-com-hotel.p.rapidapi.com/booking/best-accommodation"
+#     querystring = {"cityName":city,"countryName":"India"}
+#     headers = {
+#         "X-RapidAPI-Key": rapid_api_key,
+#         "X-RapidAPI-Host": "best-booking-com-hotel.p.rapidapi.com"
+#     }
+#     response = requests.get(url, headers=headers, params=querystring)
+#     return response.json()
 
