@@ -1,0 +1,4 @@
+openai
+fastapi[all]
+python-dotenv
+gunicorn==20.1.0
